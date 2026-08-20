@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🛡️ Phishing Website Detector</h1>
+        <p>Enter a URL below to check if it is safe or phishing</p>
+
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL e.g. https://google.com" required>
+            <button type="submit">🔍 Check URL</button>
+        </form>
+
+        <a href="/history">📋 View History</a>
+    </div>
+
+</body>
+</html>

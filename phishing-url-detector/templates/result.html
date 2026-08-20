@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🛡️ Detection Result</h1>
+
+        <div class="url-box">
+            <p><strong>URL:</strong> {{ url }}</p>
+        </div>
+
+        {% if result == "Phishing" %}
+        <div class="result phishing">
+            ⚠️ WARNING! This website is <strong>PHISHING!</strong>
+        </div>
+        {% else %}
+        <div class="result legitimate">
+            ✅ This website appears to be <strong>LEGITIMATE</strong>
+        </div>
+        {% endif %}
+
+        <div class="score">
+            <p>Risk Score: <strong>{{ score }}</strong> / 15</p>
+        </div>
+
+        <div class="features">
+            <h3>📊 URL Analysis:</h3>
+            <ul>
+                <li>URL Length: {{ features.url_length }} characters</li>
+                <li>Has IP Address: {{ "Yes ⚠️" if features.has_ip else "No ✅" }}</li>
+                <li>Has @ Symbol: {{ "Yes ⚠️" if features.has_at else "No ✅" }}</li>
+                <li>HTTPS: {{ "Yes ✅" if features.has_https else "No ⚠️" }}</li>
+                <li>Suspicious Words: {{ "Yes ⚠️" if features.has_suspicious_words else "No ✅" }}</li>
+                <li>Subdomains: {{ features.subdomains }}</li>
+            </ul>
+        </div>
+
+        <a href="/">🔙 Check Another URL</a>
+    </div>
+
+</body>
+</html>
